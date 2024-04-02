@@ -1,0 +1,21 @@
+# webhook-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhook-server
+  template:
+    metadata:
+      labels:
+        app: webhook-server
+    spec:
+      containers:
+      - name: webhook-server
+        image: 127.0.0.1:49372/webhook-server:latest
+        ports:
+        - containerPort: 8443
